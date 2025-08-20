@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "langgraph-course"
+version = "0.1.0"
+description = "A LangGraph based AI agent project"
+authors = ["Vivek Singh <vivek.singh.6967@gmail.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+langchain = ">=0.3.27"
+langgraph = ">=0.6.6"
+langchain-tavily = ">=0.2.11"
+python-dotenv = ">=1.1.1"
+langchain-google-genai = ">=2.1.9"
+langchain-core = ">=0.1.0"
+grandalf = "^0.8"
+
+[tool.poetry.group.dev.dependencies]
+black = ">=25.1.0"
+pytest = ">=7.0.0"
+pytest-cov = ">=4.0.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "src.main:main"
