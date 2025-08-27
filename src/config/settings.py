@@ -13,7 +13,7 @@ class Config:
     LANGCHAIN_PROJECT: Optional[str] = None
     GOOGLE_MODEL: str = "models/gemini-2.5-flash"
     MODEL_TEMPERATURE: float = 0.0
-    VISUALIZE_GRAPH: Optional[bool] = None
+    VISUALIZE_GRAPH: Optional[bool] = False
 
 class ConfigKey(Enum):
     """Enum for configuration keys."""
@@ -43,7 +43,7 @@ def load_config() -> Config:
             LANGCHAIN_PROJECT=os.getenv("LANGCHAIN_PROJECT"),
             GOOGLE_MODEL=os.getenv("GOOGLE_MODEL", "gemini-1.5-flash"),
             MODEL_TEMPERATURE=float(os.getenv("MODEL_TEMPERATURE", "0.0")),
-            VISUALIZE_GRAPH=os.getenv("VISUALIZE_GRAPH", "False")
+            VISUALIZE_GRAPH = bool(os.getenv("VISUALIZE_GRAPH", False)=="true")
         )
     return _config_instance
 

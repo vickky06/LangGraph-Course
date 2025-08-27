@@ -35,6 +35,6 @@ class AgentNode(AgentInterface):
         """
         Run the agent reasoning node.
         """
-        response = self.llm.invoke([{"role": "system", "content": SYSTEM_MESSAGE}, *state["messages"]])
+        response = self.llm.invoke([{"role": "system", "content": SYSTEM_MESSAGE}, *state["messages"]]) # type: ignore
         return {"messages": [response]}
       

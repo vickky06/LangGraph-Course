@@ -32,12 +32,13 @@ def graph_main():
 
 if __name__ == "__main__":
     graph = graph_main()
-    question = "What is the temperature in Tokyo? List it and then triple it, then take the tripled value, multiply it with 7, use the value as year, and tell me a historical event from that year."
+    question = "What is the temperature in Tokyo? List the temprature and then triple it, then take the tripled value, multiply it with 7, use the value as year, and tell me a historical event from that year."
     if graph:
         # Example usage of the graph
-        result = graph.invoke({"messages": [HumanMessage(content=question)]})
         if get_config(ConfigKey.VISUALIZE_GRAPH):
             create_visualization(graph)
+        result = graph.invoke({"messages": [HumanMessage(content=question)]})
+        
         print("Graph execution result:", result["messages"][-1].content)
     else:
         print("Failed to initialize the graph.")    

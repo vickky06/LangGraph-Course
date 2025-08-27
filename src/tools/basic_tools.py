@@ -14,7 +14,6 @@ def tripple_number(x: Union[int, float]) -> float:
     Returns:
         float: Tripled value
     """
-    print(f"Tripling {x}")
     return x * 3
 
 def register_tools() -> List[BaseTool]:
