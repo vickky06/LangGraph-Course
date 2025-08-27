@@ -33,9 +33,13 @@ class GenAI_LLMManager(LLMInterface):
         )
         
         if tools:
-            self._tools.extend(tools)
-            llm = llm.bind_tools(tools)
-            
+            # Only add tools that are not already registered
+            existing_tool_ids = {id(tool) for tool in self._tools}
+            new_tools = [tool for tool in tools if id(tool) not in existing_tool_ids]
+            if new_tools:
+                self._tools.extend(new_tools)
+        if self._tools:
+            llm = llm.bind_tools(self._tools)
         self._llm = llm
         return self._llm
 

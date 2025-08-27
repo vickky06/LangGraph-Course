@@ -11,8 +11,9 @@ class Config:
     TAVILY_API_KEY: Optional[str] = None
     LANGCHAIN_ENDPOINT: Optional[str] = None
     LANGCHAIN_PROJECT: Optional[str] = None
-    GOOGLE_MODEL: str = "gemini-1.5-flash"
-    MODEL_TEMPERATURE: float = 0.7
+    GOOGLE_MODEL: str = "models/gemini-2.5-flash"
+    MODEL_TEMPERATURE: float = 0.0
+    VISUALIZE_GRAPH: Optional[bool] = None
 
 class ConfigKey(Enum):
     """Enum for configuration keys."""
@@ -22,6 +23,7 @@ class ConfigKey(Enum):
     LANGCHAIN_PROJECT = "LANGCHAIN_PROJECT"
     GOOGLE_MODEL = "GOOGLE_MODEL"
     MODEL_TEMPERATURE = "MODEL_TEMPERATURE"
+    VISUALIZE_GRAPH = "VISUALIZE_GRAPH"
 
 _config_instance: Optional[Config] = None
 
@@ -40,7 +42,8 @@ def load_config() -> Config:
             LANGCHAIN_ENDPOINT=os.getenv("LANGCHAIN_ENDPOINT"),
             LANGCHAIN_PROJECT=os.getenv("LANGCHAIN_PROJECT"),
             GOOGLE_MODEL=os.getenv("GOOGLE_MODEL", "gemini-1.5-flash"),
-            MODEL_TEMPERATURE=float(os.getenv("MODEL_TEMPERATURE", "0.7"))
+            MODEL_TEMPERATURE=float(os.getenv("MODEL_TEMPERATURE", "0.0")),
+            VISUALIZE_GRAPH=os.getenv("VISUALIZE_GRAPH", "False")
         )
     return _config_instance
 

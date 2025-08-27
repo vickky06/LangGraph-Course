@@ -31,26 +31,10 @@ class AgentNode(AgentInterface):
         return self.tools_list
 
     def run_agent_reasoning(self, state: Optional[MessagesState] = None) -> MessagesState:
-        """Run the agent's reasoning process.
-        
-        Args:
-            state: Current message state
-            
-        Returns:
-            Updated message state with agent's response
+
         """
-        if state is None:
-            state = {"messages": []}
-            
-        try:
-            response = self.llm.invoke(
-                [{"role": "system", "content": SYSTEM_MESSAGE}, *state["messages"]]
-            )
-            response = AIMessage(content=response.content, additional_kwargs=response.additional_kwargs)
-            state["messages"].append(response)
-            return {"messages": state["messages"]}
-            
-        except Exception as e:
-            error_msg = AIMessage(content=f"Error: {str(e)}", additional_kwargs={})
-            state["messages"].append(error_msg)
-            return {"messages": state["messages"]}
+        Run the agent reasoning node.
+        """
+        response = self.llm.invoke([{"role": "system", "content": SYSTEM_MESSAGE}, *state["messages"]])
+        return {"messages": [response]}
+      

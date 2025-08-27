@@ -1,10 +1,11 @@
 from typing import Dict, Any, List, Optional
 from langchain_core.tools import tool, BaseTool
 from langchain_tavily import TavilySearch
+from typing import Union
 from ..config.settings import get_config, ConfigKey
 
 @tool
-def tripple(x: float) -> float:
+def tripple_number(x: Union[int, float]) -> float:
     """Triple a number.
     
     Args:
@@ -24,10 +25,10 @@ def register_tools() -> List[BaseTool]:
     """
     # Initialize Tavily search with API key
     tavily_api_key = get_config(ConfigKey.TAVILY_API_KEY)
-    search_tool = TavilySearch(api_key=tavily_api_key)
+    search_tool = TavilySearch(max_results=1,topic="general",api_key=tavily_api_key)
     
     available_tools = [
-        tripple,
+        tripple_number,
         search_tool,  # Add Tavily search
         # Add more tools here as needed
     ]
