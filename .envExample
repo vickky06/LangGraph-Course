@@ -1,0 +1,9 @@
+GOOGLE_API_KEY = sample
+LANGCHAIN_API_KEY=sample
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
+LANGCHAIN_PROJECT=ReAct Function Calling
+TAVILY_API_KEY=Sample
+GOOGLE_MODEL = models/gemini-2.5-flash
+MODEL_TEMPRATURE = 0.0
+VISUALIZE_GRAPH = False
