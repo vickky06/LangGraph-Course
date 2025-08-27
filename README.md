@@ -1,5 +1,3 @@
-A LangGraph-based AI agent project that demonstrates the implementation of conversational AI agents using LangChain and Google's Generative AI.
-
 # LangGraph Course
 
 A LangGraph-based AI agent project that demonstrates the implementation of conversational AI agents using LangChain and Google's Generative AI.
